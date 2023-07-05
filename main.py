@@ -109,8 +109,12 @@ def plscount(path, filetype):
     with open(path, 'r') as f:
         if not f.readable():
             return Count(0, 0, 0, 0, 0, 1)
-        # print(f"Counting {path}")
-        lines = f.readlines()
+        #print(f"Counting {path}")
+        try:
+            lines = f.readlines()
+        except:
+            print(f"WARNING: Could not read {path}")
+            return Count(0, 0, 0, 0, 0, 1)
         codeOnly = 0
         commentOnly = 0
         mixed = 0
