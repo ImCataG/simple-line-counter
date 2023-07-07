@@ -1,15 +1,8 @@
 import os
 import sys
 import platform
+from languages import *
 
-class Comments:
-    singleLine = []
-    multiLine = {}
-
-    def __init__(self, singleLine, multiLine):
-        self.singleLine = singleLine
-        self.multiLine = multiLine
-    
 class Count:
     codeOnly = 0
     commentOnly = 0
@@ -168,9 +161,6 @@ def plscount(path, filetype):
         if filetype == "other":
             return Count(0, 0, 0, blank, codeOnly, 0)
         return Count(codeOnly, commentOnly, mixed, blank)
-
-extensionlookup = {'c' : 'C', 'cpp' : 'C++', 'h' : 'C / C++ header or similar', 'py' : 'Python', 'java' : 'Java', 'rs' : 'Rust', 'sh' : 'Shell'}
-commentlookup = {'other' : Comments([],{}), 'C' : Comments(['//'], {'/*' : '*/'}), 'C++' : Comments(['//'], {'/*' : '*/'}), 'C / C++ header or similar' : Comments(['//'], {'/*' : '*/'}), 'Python' : Comments(['#'], {}), 'Java' : Comments(['//'], {'/*' : '*/'}), 'Rust' : Comments(['//'], {'/*' : '*/'}), 'Shell' : Comments(['#'], {})}
 
 if __name__ == "__main__":
     splitter = "/"
